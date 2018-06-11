@@ -2,6 +2,7 @@
 #define WORKSPACE_H
 #include "itemfile.h"
 #include "itemfolder.h"
+#include "unit.h"
 #include "directives.h"
 #include "iostream"
 #include <string>
@@ -25,6 +26,8 @@ public:
 
     void get_file_list();
     void set_file_list();
+    void organize();
+    void explore();
 
     void setFile(int, fs::path);
     void setFolder(int);
@@ -34,9 +37,11 @@ public:
 private :
    ItemFile iFile[numberOfItemFile];
    ItemFolder iFolder[numberOfItemFolder];
+   Unit iUnit[numberOfUnit];
    int nItemMax;
    int nItemFile;
    int nItemFolder;
+   int nUnit;
    //map <int,int> itemTab;
    vector <int> itemTab;
    vector <int> freeItemTab;
@@ -44,6 +49,8 @@ private :
    vector <int> itemFolderTab;
    vector <int> freeItemFileTab;
    vector <int> freeItemFolderTab;
+   vector <int> freeUnitTab;
+   vector <int> unitTab;
 
 
    string rootPath;

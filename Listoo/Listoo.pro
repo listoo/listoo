@@ -29,7 +29,9 @@ SOURCES += \
     core/workspace.cpp \
     core/item.cpp \
     core/itemfile.cpp \
-    core/itemfolder.cpp
+    core/itemfolder.cpp \
+    core/unit.cpp \
+    core/t_unit.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,7 +39,9 @@ HEADERS += \
     core/item.h \
     core/itemfile.h \
     core/itemfolder.h \
-    core/directives.h
+    core/directives.h \
+    core/unit.h \
+    core/t_unit.h
 
 FORMS += \
         mainwindow.ui

@@ -11,9 +11,18 @@ class ItemFile: public Item
 public:
     ItemFile();
     void itemize(int,fs::path);
+    void setPath(fs::path);
+    fs::path getPath();
+    void setFileSize(boost::uintmax_t);
+    boost::uintmax_t getFileSize();
+    void setExtension(string);
+    string getExtension();
+    void print_infos();
 private:
 
-    boost::multiprecision::mpz_int myint;
+    boost::uintmax_t filesize;
+    fs::path parent_path;
+    string extension;
 };
 
 #endif // ITEMFILE_H

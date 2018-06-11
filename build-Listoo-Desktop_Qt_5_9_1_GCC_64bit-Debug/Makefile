@@ -55,13 +55,17 @@ SOURCES       = ../Listoo/main.cpp \
 		../Listoo/core/workspace.cpp \
 		../Listoo/core/item.cpp \
 		../Listoo/core/itemfile.cpp \
-		../Listoo/core/itemfolder.cpp moc_mainwindow.cpp
+		../Listoo/core/itemfolder.cpp \
+		../Listoo/core/unit.cpp \
+		../Listoo/core/t_unit.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		workspace.o \
 		item.o \
 		itemfile.o \
 		itemfolder.o \
+		unit.o \
+		t_unit.o \
 		moc_mainwindow.o
 DIST          = ../../../Qt5.9.1/5.9.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.9.1/5.9.1/gcc_64/mkspecs/common/unix.conf \
@@ -247,12 +251,16 @@ DIST          = ../../../Qt5.9.1/5.9.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../Listoo/core/item.h \
 		../Listoo/core/itemfile.h \
 		../Listoo/core/itemfolder.h \
-		../Listoo/core/directives.h ../Listoo/main.cpp \
+		../Listoo/core/directives.h \
+		../Listoo/core/unit.h \
+		../Listoo/core/t_unit.h ../Listoo/main.cpp \
 		../Listoo/mainwindow.cpp \
 		../Listoo/core/workspace.cpp \
 		../Listoo/core/item.cpp \
 		../Listoo/core/itemfile.cpp \
-		../Listoo/core/itemfolder.cpp
+		../Listoo/core/itemfolder.cpp \
+		../Listoo/core/unit.cpp \
+		../Listoo/core/t_unit.cpp
 QMAKE_TARGET  = Listoo
 DESTDIR       = 
 TARGET        = Listoo
@@ -646,8 +654,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt5.9.1/5.9.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Listoo/mainwindow.h ../Listoo/core/workspace.h ../Listoo/core/item.h ../Listoo/core/itemfile.h ../Listoo/core/itemfolder.h ../Listoo/core/directives.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Listoo/main.cpp ../Listoo/mainwindow.cpp ../Listoo/core/workspace.cpp ../Listoo/core/item.cpp ../Listoo/core/itemfile.cpp ../Listoo/core/itemfolder.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Listoo/mainwindow.h ../Listoo/core/workspace.h ../Listoo/core/item.h ../Listoo/core/itemfile.h ../Listoo/core/itemfolder.h ../Listoo/core/directives.h ../Listoo/core/unit.h ../Listoo/core/t_unit.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Listoo/main.cpp ../Listoo/mainwindow.cpp ../Listoo/core/workspace.cpp ../Listoo/core/item.cpp ../Listoo/core/itemfile.cpp ../Listoo/core/itemfolder.cpp ../Listoo/core/unit.cpp ../Listoo/core/t_unit.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Listoo/mainwindow.ui $(DISTDIR)/
 
 
@@ -925,6 +933,7 @@ main.o: ../Listoo/main.cpp ../Listoo/mainwindow.h \
 		../Listoo/core/itemfile.h \
 		../Listoo/core/item.h \
 		../Listoo/core/itemfolder.h \
+		../Listoo/core/unit.h \
 		../Listoo/core/directives.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Listoo/main.cpp
 
@@ -1077,6 +1086,7 @@ workspace.o: ../Listoo/core/workspace.cpp ../Listoo/core/workspace.h \
 		../Listoo/core/itemfile.h \
 		../Listoo/core/item.h \
 		../Listoo/core/itemfolder.h \
+		../Listoo/core/unit.h \
 		../Listoo/core/directives.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workspace.o ../Listoo/core/workspace.cpp
 
@@ -1090,6 +1100,15 @@ itemfile.o: ../Listoo/core/itemfile.cpp ../Listoo/core/itemfile.h \
 itemfolder.o: ../Listoo/core/itemfolder.cpp ../Listoo/core/itemfolder.h \
 		../Listoo/core/item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o itemfolder.o ../Listoo/core/itemfolder.cpp
+
+unit.o: ../Listoo/core/unit.cpp ../Listoo/core/unit.h \
+		../Listoo/core/item.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o unit.o ../Listoo/core/unit.cpp
+
+t_unit.o: ../Listoo/core/t_unit.cpp ../Listoo/core/t_unit.h \
+		../Listoo/core/unit.h \
+		../Listoo/core/item.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o t_unit.o ../Listoo/core/t_unit.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

@@ -17,10 +17,17 @@ void Item::setGlobalId(int i){
     this->globalId=i;
 }
 
+int Item::getLevel(){
+    return this->level;
+}
+
+void Item::setLevel(int i){
+    this->level=i;
+}
+
 int Item::getGlobalId(){
     return this->globalId;
 }
-
 void Item::setType(string str){
     this->type=str;
 }
@@ -36,6 +43,8 @@ void Item::setName(string str){
 string Item::getName(){
     return this->name;
 }
+
+
 
 void Item::release(){
     this->free=true;

@@ -15,5 +15,6 @@ int main(int argc, char *argv[])
     cout<< "Work <<" <<Work1.getNum()<<">> initialised"<<endl;
 
     Work1.set_file_list();
+    Work1.printInfos();
     return a.exec();
 }
